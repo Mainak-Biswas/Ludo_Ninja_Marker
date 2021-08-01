@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ludo Ninja</title>
+	<meta name='viewport' content='width=device-width' />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h1>Ludo Ninja</h1>
+	<h4>Mayuk_Lona_Biswas</h4>
+	<div id="back"><img src="https://logodix.com/logo/2045911.png" alt="Back"></div>
+	<div id="calculator">
+		<div class="calc_contrainer">
+			<div class="number_circle" name="1">
+				<div class="number boxnc">
+					1
+				</div>
+				<div class="circles boxnc">
+					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
+				</div>
+			</div>
+
+			<div class="number_circle" name="2">
+				<div class="number boxnc">
+					2
+				</div>
+				<div class="circles boxnc">
+					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
+				</div>
+			</div>
+
+			<div class="number_circle" name="3">
+				<div class="number boxnc">
+					3
+				</div>
+				<div class="circles boxnc">
+					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
+				</div>
+			</div>
+
+			<div class="number_circle" name="4">
+				<div class="number boxnc">
+					4
+				</div>
+				<div class="circles boxnc">
+					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
+				</div>
+			</div>
+
+			<div class="number_circle" name="5">
+				<div class="number boxnc">
+					5
+				</div>
+				<div class="circles boxnc">
+					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
+				</div>
+			</div>
+
+			<div class="number_circle" name="6">
+				<div class="number boxnc">
+					6
+				</div>
+				<div class="circles boxnc">
+					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
+				</div>
+			</div>
+
+			<h4 id="reset">RESET</h4>
+
+		</div>
+
+		
+	</div>
+
+	<footer>
+		- By Mainak Biswas
+	</footer>
+</body>
+</html>
+
+<script type="text/javascript">
+	var arr =[0,0,0,0,0,0];
+	var hist = [];
+	var number = document.getElementsByClassName("number_circle");
+	var circle = document.getElementsByClassName("circle");
+
+	for(var i=0; i<number.length; i++)
+	{
+		number[i].addEventListener('click', function(){
+			var current = this.getAttribute('name');
+			if(arr[current-1] < 4)
+			{
+				arr[current-1]++;
+				hist.push(current);
+				this.childNodes[3].childNodes[arr[current-1]].style.background = 'black';
+			}
+			console.log(hist)
+			console.log(arr)
+		});
+	}
+
+	var back = document.getElementById('back');
+	back.onclick = function(){		
+		var num = hist.pop();
+
+		if(arr[num-1] > 0)
+		{
+			number[num-1].childNodes[3].childNodes[arr[num-1]].style.background = 'none';
+			arr[num-1]--;
+		}
+
+		console.log(hist)
+		console.log(arr)
+	}
+
+	var reset = document.getElementById("reset");
+
+	reset.onclick = function(){
+		for(var i=0; i<circle.length; i++)
+		{
+			circle[i].style.background = 'none';
+		}
+		arr =[0,0,0,0,0,0];
+		hist = [];
+	};
+</script>
+
+<style type="text/css">
+body{
+	text-align: center;
+	color: #999;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+h1{
+	font-weight: bolder;
+    background: linear-gradient(45deg, cadetblue, #62e892);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.circle{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	border: 2px solid grey;
+	margin: 0px 7px;
+}
+
+.circle_m{
+	background: black;
+}
+
+.number_circle{	
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 240px;
+    width: 50%;
+}
+
+.number_circle:active{
+	background: linear-gradient(45deg, cadetblue, #62e892);
+	color: white;
+}
+
+.boxnc{
+    display: inline-block;
+    text-align: center;
+    padding: 1% 0%;
+}
+
+.number{
+    width: 20%;
+    font-weight: bold;
+}
+
+.circles{
+    width: 78%;
+}
+
+#reset{	
+    min-width: 240px;
+    width: 50%;
+    margin: 20px 0px;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    color: white;
+    font-weight: bolder;
+    background: linear-gradient(45deg, cadetblue, #62e892);
+    transition: all 0.5s;
+}
+
+#reset:active{
+	transform: scale(1.05,1.05);
+	box-shadow: 0px 0px 10px cadetblue;
+}
+
+#back img{
+	height: 50px;
+	transition: all 0.5;
+}
+
+#back img:active{
+	transform: scale(1.05,1.05);
+}
+
+h4{
+	color: cadetblue;
+}
+
+footer{
+	position: fixed;
+	bottom: 0px;
+	font-weight: bold;
+	text-align: right;
+	width: 95%;
+	font-size: 14px;
+}
+
+</style>
