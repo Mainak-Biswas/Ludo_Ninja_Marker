@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ludo Ninja</title>
+	<title>Ludo Ninja Marker</title>
 	<meta name='viewport' content='width=device-width' />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h1>Ludo Ninja</h1>
-	<h4>Mayuk_Lona_Biswas</h4>
+	<h3>Ludo Ninja Marker</h3>
 	<div id="back"><img src="https://logodix.com/logo/2045911.png" alt="Back"></div>
 	<div id="calculator">
 		<div class="calc_contrainer">
@@ -94,7 +93,7 @@
 			{
 				arr[current-1]++;
 				hist.push(current);
-				this.childNodes[3].childNodes[arr[current-1]].style.background = 'black';
+				this.childNodes[3].childNodes[arr[current-1]].style.background = '#62e892';
 			}
 			console.log(hist)
 			console.log(arr)
@@ -132,10 +131,9 @@ body{
 	text-align: center;
 	color: #999;
     font-family: 'Montserrat', sans-serif;
-
 }
 
-h1{
+h3{
 	font-weight: bolder;
     background: linear-gradient(45deg, cadetblue, #62e892);
     color: white;
@@ -152,16 +150,10 @@ h1{
 	margin: 0px 7px;
 }
 
-.circle_m{
-	background: black;
-}
-
 .number_circle{	
-    border: 2px solid #ddd;
-    border-radius: 10px;
+    border-bottom: 2px solid #ddd;
     display: inline-block;
-    min-width: 240px;
-    width: 50%;
+    width: 98%;
 }
 
 .number_circle:active{
@@ -176,20 +168,15 @@ h1{
 }
 
 .number{
-    width: 20%;
-    font-weight: bold;
-}
-
-.circles{
-    width: 78%;
+	color:cadetblue;
+    font-weight: 1000;
 }
 
 #reset{	
-    min-width: 240px;
-    width: 50%;
-    margin: 20px 0px;
+    width: 100%;
+    margin: 10px 0px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 0px;
     display: inline-block;
     color: white;
     font-weight: bolder;
@@ -203,8 +190,10 @@ h1{
 }
 
 #back img{
-	height: 50px;
+	height: 37px;
 	transition: all 0.5;
+	background: white;
+	border-radius: 100%;
 }
 
 #back img:active{
