@@ -72,6 +72,7 @@
   function resetGame() {
     for (var i = 0; i < circle.length; i++) {
       circle[i].style.background = "none";
+      circle[i].style.boxShadow = "none";
     }
     arr = [0, 0, 0, 0, 0, 0];
     hist = [];
@@ -137,9 +138,11 @@
     var num = hist.pop();
 
     if (arr[num - 1] > 0) {
-      number[num - 1].childNodes[3].childNodes[
+      var el = number[num - 1].childNodes[3].childNodes[
         arr[num - 1] - 1
-      ].style.background = "none";
+      ];
+      el.style.background = "none";
+      el.style.boxShadow = "none";
       arr[num - 1]--;
     }
 
