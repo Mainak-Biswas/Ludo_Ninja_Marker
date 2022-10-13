@@ -1,167 +1,186 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Ludo Ninja Marker</title>
-	<meta name='viewport' content='width=device-width' />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap" rel="stylesheet">
-</head>
-<body>
-	<div id="back"><img src="https://logodix.com/logo/2045911.png" alt="Back"></div>
-	<div id="calculator">
-		<div class="calc_contrainer">
-			<div class="number_circle" name="1">
-				<div class="number boxnc">
-					1
-				</div>
-				<div class="circles boxnc">
-					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
-				</div>
-			</div>
+  <head>
+    <title>Ludo Ninja Marker</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="back">
+      <img src="https://logodix.com/logo/2045911.png" alt="Back" />
+    </div>
+    <div id="calculator">
+      <div class="calc_contrainer">
+        <div class="number_circle" name="1">
+          <div class="number boxnc">1</div>
+          <div class="circles boxnc"></div>
+        </div>
 
-			<div class="number_circle" name="2">
-				<div class="number boxnc">
-					2
-				</div>
-				<div class="circles boxnc">
-					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
-				</div>
-			</div>
+        <div class="number_circle" name="2">
+          <div class="number boxnc">2</div>
+          <div class="circles boxnc"></div>
+        </div>
 
-			<div class="number_circle" name="3">
-				<div class="number boxnc">
-					3
-				</div>
-				<div class="circles boxnc">
-					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
-				</div>
-			</div>
+        <div class="number_circle" name="3">
+          <div class="number boxnc">3</div>
+          <div class="circles boxnc"></div>
+        </div>
 
-			<div class="number_circle" name="4">
-				<div class="number boxnc">
-					4
-				</div>
-				<div class="circles boxnc">
-					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
-				</div>
-			</div>
+        <div class="number_circle" name="4">
+          <div class="number boxnc">4</div>
+          <div class="circles boxnc"></div>
+        </div>
 
-			<div class="number_circle" name="5">
-				<div class="number boxnc">
-					5
-				</div>
-				<div class="circles boxnc">
-					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
-				</div>
-			</div>
+        <div class="number_circle" name="5">
+          <div class="number boxnc">5</div>
+          <div class="circles boxnc"></div>
+        </div>
 
-			<div class="number_circle" name="6">
-				<div class="number boxnc">
-					6
-				</div>
-				<div class="circles boxnc">
-					<div class="circle circle1"></div><div class="circle circle2"></div><div class="circle circle3"></div><div class="circle circle4"></div>
-				</div>
-			</div>
+        <div class="number_circle" name="6">
+          <div class="number boxnc">6</div>
+          <div class="circles boxnc"></div>
+        </div>
 
-			<h4 id="reset">RESET</h4>
+        <h4 id="reset">RESET</h4>
 
-		</div>
-
-		
-	</div>
-</body>
+        <div class="cb1">
+          <div id="cbi"></div>
+          <input type="checkbox" id="cb1" onclick="setChaals()" />
+          <label for="cb1" id="cb1lb">4</label>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 
 <script type="text/javascript">
-	var arr =[0,0,0,0,0,0];
-	var hist = [];
-	var number = document.getElementsByClassName("number_circle");
-	var circle = document.getElementsByClassName("circle");
+  var arr = [0, 0, 0, 0, 0, 0];
+  var hist = [];
+  let dots = 4;
+  var circles = document.getElementsByClassName("circles");
+  var number = document.getElementsByClassName("number_circle");
+  var circle = document.getElementsByClassName("circle");
 
-	for(var i=0; i<number.length; i++)
-	{
-		number[i].addEventListener('click', function(){
-			var current = this.getAttribute('name');
-			if(arr[current-1] < 4)
-			{
-				arr[current-1]++;
-				hist.push(current);
-				this.childNodes[3].childNodes[arr[current-1]].style.background = 'cadetblue';
-			}
-			console.log(hist)
-			console.log(arr)
-		});
-	}
+  // To Reset the counter
+  var reset = document.getElementById("reset");
 
-	var back = document.getElementById('back');
-	back.onclick = function(){		
-		var num = hist.pop();
+  function resetGame() {
+    for (var i = 0; i < circle.length; i++) {
+      circle[i].style.background = "none";
+    }
+    arr = [0, 0, 0, 0, 0, 0];
+    hist = [];
+  }
 
-		if(arr[num-1] > 0)
-		{
-			number[num-1].childNodes[3].childNodes[arr[num-1]].style.background = 'none';
-			arr[num-1]--;
-		}
+  reset.onclick = () => {
+    resetGame();
+  };
 
-		console.log(hist)
-		console.log(arr)
-	}
+  // To set the number of chaals
+  var chaalSet = document.getElementById("cb1");
+  var chaalLabel = document.getElementById("cb1lb");
+  function setChaals() {
+    if (chaalSet.checked) dots = 5;
+    else dots = 4;
+    console.log(dots);
+    chaalLabel.innerHTML = dots;
+    setTotalCircles();
+  }
 
-	var reset = document.getElementById("reset");
+  // To render the dots
+  function setTotalCircles() {
+    resetGame();
+    for (var i = 0; i < circles.length; i++) {
+      circles[i].innerHTML = "";
+      for (var j = 1; j <= dots; j++) {
+        var dot = document.createElement("div");
+        dot.setAttribute("class", "circle circle" + j);
+        circles[i].appendChild(dot);
+      }
+    }
+  }
 
-	reset.onclick = function(){
-		for(var i=0; i<circle.length; i++)
-		{
-			circle[i].style.background = 'none';
-		}
-		arr =[0,0,0,0,0,0];
-		hist = [];
-	};
+  // To Load the dots
+  window.onload = () => {
+    setTotalCircles();
+  };
+
+  // Logic to increment the counter
+  for (var i = 0; i < number.length; i++) {
+    number[i].addEventListener("click", function () {
+      let current = this.getAttribute("name");
+      if (arr[current - 1] < dots) {
+        arr[current - 1]++;
+        hist.push(current);
+        this.childNodes[3].childNodes[arr[current - 1] - 1].style.background =
+          "black";
+      }
+      console.log(hist);
+      console.log(arr);
+    });
+  }
+
+  // Logic to Undo
+  var back = document.getElementById("back");
+  back.onclick = function () {
+    var num = hist.pop();
+
+    if (arr[num - 1] > 0) {
+      number[num - 1].childNodes[3].childNodes[
+        arr[num - 1] - 1
+      ].style.background = "none";
+      arr[num - 1]--;
+    }
+
+    console.log(hist);
+    console.log(arr);
+  };
 </script>
 
 <style type="text/css">
-body{
-	text-align: center;
-	color: #999;
-    	font-family: 'Montserrat', sans-serif;
-	margin: 0px
-}
+  body {
+    text-align: center;
+    color: #999;
+    font-family: "Montserrat", sans-serif;
+  }
 
+  .circle {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 2px solid grey;
+    margin: 0px 7px;
+  }
 
-.circle{
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	border-radius: 100%;
-	border: 2px solid grey;
-	margin: 0px 7px;
-}
-
-.number_circle{	
+  .number_circle {
     border-bottom: 2px solid #ddd;
     display: inline-block;
     width: 98%;
-}
+  }
 
-.number_circle:active{
-	background: linear-gradient(45deg, cadetblue, #62e892);
-	color: white;
-}
+  .number_circle:active {
+    background: linear-gradient(45deg, cadetblue, #62e892);
+    color: white;
+  }
 
-.boxnc{
+  .boxnc {
     display: inline-block;
-    text-align: left;
-    padding: 4% 0%;
-}
+    text-align: center;
+    padding: 1% 0%;
+  }
 
-.number{
-	color:cadetblue;
+  .number {
+    color: cadetblue;
     font-weight: 1000;
-}
+  }
 
-#reset{	
+  #reset {
     width: 100%;
     margin: 10px 0px;
     border-radius: 10px;
@@ -171,27 +190,75 @@ body{
     font-weight: bolder;
     background: linear-gradient(45deg, cadetblue, #62e892);
     transition: all 0.5s;
-}
+  }
 
-#reset:active{
-	transform: scale(1.05,1.05);
-	box-shadow: 0px 0px 10px cadetblue;
-}
+  #reset:active {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0px 0px 10px cadetblue;
+  }
 
-#back img{
-	height: 37px;
-	transition: all 0.5;
-	background: white;
-	border-radius: 100%;
-}
+  #back img {
+    height: 37px;
+    transition: all 0.5;
+    background: white;
+    border-radius: 100%;
+  }
 
-#back img:active{
-	transform: scale(1.05,1.05);
-}
+  #back img:active {
+    transform: scale(1.05, 1.05);
+  }
 
-h4{
-	color: cadetblue;
-}
+  h4 {
+    color: cadetblue;
+  }
 
+  /* CheckBox Style */
+  .cb1 {
+    display: block;
+    width: 60px;
+    height: 30px;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 30px;
+  }
 
+  .cb1 input[type="checkbox"]:checked + label {
+    left: 17px;
+    box-shadow: 0px 0px 10px #62e593;
+    color: #62e593;
+  }
+
+  .cb1 input[type="checkbox"] {
+    visibility: hidden;
+  }
+
+  .cb1 label {
+    width: 35px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    font-weight: 600;
+    color: #5fa19f;
+    top: 2px;
+    left: 2px;
+    padding: 5%;
+    z-index: 1;
+    background: #fff;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    box-shadow: 0px 0px 10px #5fa19f;
+  }
+
+  #cbi {
+    border-right: #5fa2a0 27px solid;
+    width: 27px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: #62e492;
+    border-radius: 20px;
+  }
 </style>
