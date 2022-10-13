@@ -108,6 +108,11 @@
   // To Load the dots
   window.onload = () => {
     setTotalCircles();
+
+    var today = new Date();
+    if (today.getHours() >= 18) {
+      document.body.style.background = "#0b141c";
+    }
   };
 
   // Logic to increment the counter
@@ -117,8 +122,9 @@
       if (arr[current - 1] < dots) {
         arr[current - 1]++;
         hist.push(current);
-        this.childNodes[3].childNodes[arr[current - 1] - 1].style.background =
-          "black";
+        var el = this.childNodes[3].childNodes[arr[current - 1] - 1];
+        el.style.background = "#62df94";
+        el.style.boxShadow = "0px 0px 10px #62df94";
       }
       console.log(hist);
       console.log(arr);
@@ -169,7 +175,6 @@
 
   .number_circle:active {
     background: linear-gradient(45deg, cadetblue, #62e892);
-    color: white;
   }
 
   .boxnc {
@@ -203,7 +208,7 @@
   #back img {
     height: 37px;
     transition: all 0.5;
-    background: white;
+    background: radial-gradient(white, white, transparent, transparent);
     border-radius: 100%;
   }
 
